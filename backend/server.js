@@ -9,7 +9,10 @@ connectDB();
 
 const app = express();
 
-// ✅ Correct CORS middleware (MUST come after app is created)
+// Required for GitHub Codespaces
+app.set("trust proxy", 1);
+
+// ⭐ CORS MUST COME BEFORE EVERYTHING ELSE
 app.use(cors({
     origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
@@ -19,7 +22,7 @@ app.use(cors({
 // Body parser
 app.use(express.json());
 
-// Rate limiter
+// ⭐ Rate limiter MUST come AFTER CORS
 app.use(rateLimiter);
 
 // Routes
