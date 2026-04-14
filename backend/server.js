@@ -7,25 +7,25 @@ import rateLimiter from "./middleware/rateLimit.js";
 dotenv.config();
 connectDB();
 
-const app = express();
+const app = express();  // ⭐ MUST be here
 
-// Required for GitHub Codespaces + rate limiter
+// Required for GitHub Codespaces
 app.set("trust proxy", 1);
 
-// ⭐ CORS MUST be before everything else
+// ⭐ CORS FIRST
 app.use(cors({
     origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-// ⭐ Handle preflight OPTIONS requests (this fixes your error)
+// ⭐ Handle preflight OPTIONS requests
 app.options("*", cors());
 
 // Body parser
 app.use(express.json());
 
-// Rate limiter (must come AFTER CORS)
+// ⭐ Rate limiter AFTER CORS
 app.use(rateLimiter);
 
 // Routes
