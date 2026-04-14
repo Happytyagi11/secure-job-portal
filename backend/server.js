@@ -9,15 +9,17 @@ connectDB();
 
 const app = express();
 
-// ✅ FIXED: Proper CORS middleware
+// ✅ Correct CORS middleware (MUST come after app is created)
 app.use(cors({
     origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-// Required middleware
+// Body parser
 app.use(express.json());
+
+// Rate limiter
 app.use(rateLimiter);
 
 // Routes
