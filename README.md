@@ -1,62 +1,62 @@
-....
-# Secure Job Application Portal  
-A full-stack, security-focused client–server application built for demonstrating secure architecture, OWASP Top 10 mitigations, STRIDE threat modelling, and layered design.
+# Secure Job Portal – Client–Server Application
+
+A secure, full‑stack job application portal built with a layered architecture:
+Frontend (HTML/CSS/JS), Backend (Node.js/Express), Middleware (Security Layer), and
+Database (MongoDB Atlas). The system includes authentication, authorization,
+file uploads, admin review, search, and strong security controls aligned with
+OWASP Top 10 and STRIDE threat modeling.
 
 ---
 
-## 📌 Overview  
-This project is a **secure job application portal** where users can create accounts, log in, upload resumes, and submit job applications.  
-Admins can log in to a protected dashboard to search, filter, and review applications.
+## 🚀 Features
 
-The system demonstrates secure coding practices, authentication, authorization, file upload security, and database safety.
+### User Features
+- User registration & login (JWT-based)
+- Submit job applications
+- Upload resume (PDF only, size-limited)
+- View application status
+
+### Admin Features
+- Admin login
+- View all applications
+- Search/filter applications
+- Approve/reject applications
 
 ---
 
-## 🏗 Architecture  
-The application follows a strict layered architecture:
+## 🔐 Security Features
+- JWT authentication & role-based authorization
+- Input validation & sanitization
+- Rate limiting (prevents brute force)
+- CORS configuration
+- Secure file upload (type/size validation)
+- Logging & monitoring
+- Environment variables for secrets
+- MongoDB Atlas with secure connection string
 
-### **Frontend (UI Layer)**
-- HTML/CSS/JS (or React)
-- No direct database access
-- Communicates only through backend APIs
+---
 
-### **Backend (Application Layer)**
+## 🧱 Architecture
+
+### Frontend (UI Layer)
+- HTML/CSS/JS
+- Forms for login, application, admin panel
+- Fetch API to backend
+
+### Backend (Application Layer)
 - Node.js + Express
-- Authentication (JWT)
-- Authorization (role-based)
-- Validation (Joi)
-- Logging (Winston)
-- Rate limiting
-- Secure file upload (Multer)
+- Routes: `/auth`, `/applications`, `/admin`
+- Middleware: validation, auth, rate limiting, logging
 
-### **Database Layer**
-- MongoDB (Atlas)
-- Collections:
-  - Users
-  - Applications
-  - Resumes
-  - Audit Logs
+### Database Layer
+MongoDB Collections:
+- Users
+- Applications
+- Admins
+- Logs
 
 ---
 
-## 🔐 Security Features  
-This project implements multiple OWASP Top 10 controls:
+## 📦 Installation & Setup
 
-- **A01 Broken Access Control**  
-  Role-based middleware, admin-only routes
-
-- **A03 Injection**  
-  Mongoose ORM, validated inputs
-
-- **A05 Security Misconfiguration**  
-  Safe file upload config, environment variables
-
-- **A07 Identification & Authentication Failures**  
-  JWT, bcrypt password hashing
-
-- **A09 Logging & Monitoring Failures**  
-  Audit logs + Winston logging
-
----
-
-## 📂 Repository Structure  
+### 1. Clone the repository

@@ -30,7 +30,7 @@ document.getElementById("applyForm")?.addEventListener("submit", async e => {
     formData.append("position", position);
     formData.append("resume", resume);
 
-    const res = await fetch(`${API}/apply`, {
+    const res = await fetch(`${API}/applications`, {
         method: "POST",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         body: formData
