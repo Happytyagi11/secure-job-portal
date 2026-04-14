@@ -1,5 +1,4 @@
-const API = "https://turbo-palm-tree-97x9v7gjrj5gcx6rr-4000.app.github.dev";
-
+const API = "http://localhost:4000";
 
 document.getElementById("loginForm")?.addEventListener("submit", async e => {
     e.preventDefault();
