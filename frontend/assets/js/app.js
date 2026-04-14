@@ -1,5 +1,6 @@
 const API = "http://localhost:4000";
 
+/* ---------------------- LOGIN ---------------------- */
 document.getElementById("loginForm")?.addEventListener("submit", async e => {
     e.preventDefault();
 
@@ -13,11 +14,18 @@ document.getElementById("loginForm")?.addEventListener("submit", async e => {
     });
 
     const data = await res.json();
+
+    if (!res.ok) {
+        alert(data.message || "Login failed");
+        return;
+    }
+
     localStorage.setItem("token", data.token);
-    alert("Logged in");
+    alert("Logged in successfully");
+    window.location.href = "apply.html";
 });
 
-
+/* ---------------------- APPLY FORM ---------------------- */
 document.getElementById("applyForm")?.addEventListener("submit", async e => {
     e.preventDefault();
 
@@ -30,16 +38,25 @@ document.getElementById("applyForm")?.addEventListener("submit", async e => {
     formData.append("position", position);
     formData.append("resume", resume);
 
-    const res = await fetch(`${API}/applications`, {
+    const res = await fetch(`${API}/applications/submit`, {
         method: "POST",
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        headers: { 
+            Authorization: `Bearer ${localStorage.getItem("token")}` 
+        },
         body: formData
     });
 
     const data = await res.json();
-    alert("Application submitted");
+
+    if (!res.ok) {
+        alert(data.message || "Application failed");
+        return;
+    }
+
+    alert("Application submitted successfully");
 });
 
+/* ---------------------- ADMIN SEARCH ---------------------- */
 async function searchApplicants() {
     const query = document.getElementById("search").value;
 
@@ -48,5 +65,11 @@ async function searchApplicants() {
     });
 
     const data = await res.json();
+
+    if (!res.ok) {
+        alert(data.message || "Search failed");
+        return;
+    }
+
     document.getElementById("results").innerText = JSON.stringify(data, null, 2);
 }
