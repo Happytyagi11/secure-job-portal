@@ -4,29 +4,59 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #f4f6f9;
+  background: linear-gradient(135deg, #4e73df, #1cc88a);
   margin: 0;
   padding: 0;
-  color: #333;
-}
-
-h1, h2, h3 {
-  text-align: center;
-  font-weight: 600;
-  margin-top: 20px;
-}
-
-a {
-  text-decoration: none;
-  color: #007bff;
-}
-
-a:hover {
-  text-decoration: underline;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ================================
-   Container
+   Home Page Container
+================================ */
+
+.home-container {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 40px 60px;
+  border-radius: 12px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.home-container h1 {
+  font-size: 32px;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+/* ================================
+   Navigation Buttons
+================================ */
+
+.nav-links a {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 25px;
+  background: #fff;
+  color: #4e73df;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: #f1f1f1;
+  transform: translateY(-3px);
+}
+
+/* ================================
+   Forms (Login, Apply, Admin)
 ================================ */
 
 .container {
@@ -35,81 +65,48 @@ a:hover {
   margin: 40px auto;
   background: #fff;
   padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.08);
-}
-
-/* ================================
-   Forms
-================================ */
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  border-radius: 10px;
+  color: #333;
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="file"] {
+  width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
+  margin-top: 10px;
   font-size: 15px;
 }
 
 button {
+  width: 100%;
   padding: 12px;
-  background: #007bff;
+  background: #4e73df;
   border: none;
   color: white;
   font-size: 16px;
   border-radius: 6px;
   cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s ease;
 }
 
 button:hover {
-  background: #0056b3;
+  background: #2e59d9;
 }
 
-/* ================================
-   Admin Search Results
-================================ */
-
+/* Admin results box */
 #results {
   margin-top: 20px;
-  background: #fff;
+  background: #f8f9fc;
   padding: 15px;
   border-radius: 6px;
   white-space: pre-wrap;
   font-family: monospace;
   font-size: 14px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.05);
-}
-
-/* ================================
-   Navigation Links
-================================ */
-
-.nav-links {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.nav-links a {
-  margin: 0 10px;
-  font-size: 16px;
-}
-
-/* ================================
-   Page Layout Helpers
-================================ */
-
-.center {
-  text-align: center;
-}
-
-.hidden {
-  display: none;
+  color: #333;
 }
