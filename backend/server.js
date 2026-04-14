@@ -8,29 +8,14 @@ dotenv.config();
 connectDB();
 
 const app = express();
-
-// Required for GitHub Codespaces
-app.set("trust proxy", 1);
-
-// ⭐ CORS MUST COME BEFORE EVERYTHING ELSE
-app.use(cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
-}));
-
-// Body parser
+app.use(cors());
 app.use(express.json());
-
-// ⭐ Rate limiter MUST come AFTER CORS
 app.use(rateLimiter);
 
-// Routes
 app.use("/auth", (await import("./routes/auth.js")).default);
 app.use("/applications", (await import("./routes/applications.js")).default);
 app.use("/admin", (await import("./routes/admin.js")).default);
 
-// Start server
 app.listen(process.env.PORT, () =>
   console.log(`Server running on port ${process.env.PORT}`)
 );
