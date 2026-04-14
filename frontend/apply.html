@@ -1,8 +1,16 @@
-<form id="applyForm" enctype="multipart/form-data">
-  <input id="fullName" placeholder="Full Name">
-  <input id="position" placeholder="Position">
-  <input id="resume" type="file">
-  <button>Submit</button>
-</form>
+<div class="container">
+  <h2>Apply for a Job</h2>
+
+  <form id="applyForm" enctype="multipart/form-data">
+    <input id="fullName" placeholder="Full Name" required>
+    <input id="position" placeholder="Position" required>
+    <input id="resume" type="file" accept="application/pdf" required>
+    <button>Submit Application</button>
+  </form>
+
+  <div class="nav-links">
+    <a href="index.html">Back to Home</a>
+  </div>
+</div>
 
 <script src="assets/js/app.js"></script>
